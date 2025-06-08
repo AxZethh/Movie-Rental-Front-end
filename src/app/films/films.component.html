@@ -1,0 +1,36 @@
+<div class="content-main">
+    <div class="movies-sidebar">
+        <h1 class="movies-sidebar-title">Movies</h1>
+        @for (film of films; track $index) {
+        <div class="movies-info" (click)="navigateToFilm(film.id)">
+            <h3>{{film.title}}</h3>
+            <div class="movie-release">
+                <h3>{{film.releaseDate | date: 'MMMM d y'}}</h3>
+            </div>
+        </div>
+        }
+    </div>
+    <div>
+    @if(film) {
+    <div class="movie-card">
+        <h1 class="movie-title"> {{film.title}}</h1>
+        <div class="movie-details">
+            <div><strong>Released:</strong> {{film.releaseDate | date: 'MMMM d y'}}</div>
+            <div><strong>Genre:</strong> {{film.genre}}</div>
+        </div>
+
+        <div class="movie-description-outer">
+            <h3><strong>Description</strong></h3>
+            <p class="movie-description">{{film.description}}</p>
+        </div>
+        <div class="price">Rental Price: ${{prices[film.priceType]}}</div>
+    </div>
+    }
+    @if(loggedIn && film) {
+    <footer class="content-footer">
+        <button mat-raised-button class="nav-button rent-btn" (click)="addToCart(film)">Add to Cart</button>
+    </footer>
+    }
+    
+    </div>
+</div>

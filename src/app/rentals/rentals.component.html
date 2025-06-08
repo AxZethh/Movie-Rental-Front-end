@@ -1,0 +1,31 @@
+<div class="content-main">
+    <div class="movies-sidebar">
+        <h1 class="movies-sidebar-title">Rentals</h1>
+        @for (rental of rentals; track $index) {
+        <div class="movies-info" [routerLink]="['rentals/rental', rental.id]">
+            <h3>{{rental.consumer}}</h3>
+            <div class="movie-release">
+                <!-- <h3>{{rental | date: 'MMMM d y'}}</h3> -->
+            </div>
+        </div>
+        }
+    </div>
+    <div>
+        @if(rental) {
+        <div class="movie-card">
+            <div class="movie-details">
+                <div><strong>Rented:</strong> {{rental.rentalDate| date: 'MMMM d y'}}</div>
+                <div><strong>Total Price:</strong> {{rental.totalPrice}}</div>
+                <div><strong>Payment Type:</strong> {{rental.paymentType}}</div>
+            </div>
+            <div class="movie-description-outer">
+                <p class="movie-description"></p>
+            </div>
+            <div class="movie-price">
+            </div>
+
+        </div>
+        }
+
+    </div>
+</div>

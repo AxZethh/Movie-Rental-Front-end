@@ -1,0 +1,101 @@
+.homepage-container {
+    width: 100%;
+    height: 100%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #e6e0fe;
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 1.5rem;
+        color: #e6e0fe;
+        margin-top: 1rem;
+    }
+
+    & .features {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    & .feature-card {
+        background-color: #120841;
+        border: 2px solid #8d7efb;
+        box-shadow: 0 0 10px rgba(141, 126, 251, 0.5);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        color: #e6e0fe;
+        transition: transform 0.2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(141, 126, 251, 0.7);
+        }
+        mat-icon {
+            color: #8d7efb;
+            align-self: center;
+            margin-bottom: 0.5rem;
+        }
+
+        h3 {
+          margin-top: 0;
+          align-self: center;
+          font-size: 1.5rem;
+          color: #c4bbfc;
+        }
+
+        p {
+          align-self: center;
+          font-size: 1rem;
+          color: #c4bbfc;
+        }
+    }
+
+
+    & .btn-primary {
+        display: flex;
+        justify-self: center;
+        width: 12%;
+        border: 3px solid #8d7efb;
+        box-shadow: inset 0 0 4px #e6e0fe, 0 0 0 #e6e0fe;
+        background-image: linear-gradient(90deg, #120841, #1b0884, #120841);
+        transition: box-shadow 0.1s ease-in-out;
+        font-size: 1.2rem;
+        color: #c4bbfc;
+    }
+
+    & .btn-primary:hover {
+        box-shadow: inset 0 0 10px #e6e0fe, 0 0 4px #e6e0fe;
+        cursor: pointer;
+    }
+
+    & .text-danger {
+        color: rgb(201, 14, 14);
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+    mat-form-field {
+        margin-bottom: 0.8rem;
+    }
+
+    mat-label {
+        color: #1f04c5;
+    }
+
+
+
+
+}
