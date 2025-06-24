@@ -1,6 +1,6 @@
 <div>
     <nav class="navbar">
-        <a class="nav-logo" routerLink=''>LOGO</a>
+        <a class="nav-logo" routerLink=''>MovieRental</a>
         <div class="default-btns">
             <button mat-raised-button class="default-nav-button" routerLink=''>Home</button>
             <button mat-raised-button class="default-nav-button" routerLink='films'>Films</button>
@@ -13,20 +13,22 @@
             <button mat-raised-button class="nav-button" [matMenuTriggerFor]="cartMenu">
                 <mat-icon class="cart-btn">shopping_cart</mat-icon>
             </button>
-            <mat-menu #cartMenu="matMenu">
+            <mat-menu #cartMenu="matMenu" class="cart-menu">
                 @if(cart.length <= 0) {
                     <button mat-menu-item routerLink="films">Your Cart is Empty!</button>
                 } @else {
                     @for (film of cart; track $index) {
-                    <button mat-menu-item [routerLink]="['films/film', film.id]">
-                        <span class="cart-item-name">{{ film.title }} - </span>
-                        <span class="cart-item-price">${{ prices[film.priceType] }}</span>
-                        <span class="cart-item-price"> - {{ film.rentalDuration }} Days</span>
-                    </button>
-                    <button (click)="removeFromCart(film.id)">X</button>
+                        <div class="cart-item-container">
+                            <button mat-menu-item [routerLink]="['films/film', film.id]" class="cart-item">
+                                <span class="cart-item-name">{{ film.title }} - </span>
+                                <span class="cart-item-price">${{ prices[film.priceType] }}</span>
+                                <span class="cart-item-price"> - {{ film.rentalDuration }} Days</span>
+                            </button>
+                            <button (click)="removeFromCart(film.id)" class="cart-item-rmv">X</button>
+                        </div>
                     }
                     <p class="totalPrice">Total: ${{ totalPrice }}</p>
-                    <button class="default-nav-button" style="display: flex; justify-self: center;">Checkout</button>
+                    <button class="default-nav-button" style="display: flex; justify-self: center;" (click)="checkOut()">Checkout</button>
                 }
             </mat-menu>
             <button mat-raised-button class="nav-button" routerLink='' (click)="logout()">Logout</button>

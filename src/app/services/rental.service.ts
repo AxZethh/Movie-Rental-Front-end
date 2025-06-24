@@ -6,6 +6,7 @@ import { RentalDto } from '../dto/rental.dto';
 import { Film } from '../dto/Film.dto';
 import { PaymentType } from '../enum/paymentType';
 import { Router } from '@angular/router';
+import { RentRequestDto } from '../dto/rent-request.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -31,12 +32,17 @@ export class RentalService {
   }
 
   checkOut() {
-    const rental: RentalDto = {
-      films: JSON.parse(sessionStorage.getItem('cart')!),
+    const filmIds: string[] = JSON.parse(sessionStorage.getItem('cart')!).map((film: Film) => film.id);
+    const rental: RentRequestDto = {
+      filmIds: filmIds,
       paymentType: PaymentType.CARD
     }
     this.http.post<RentalDto>(this.baseurl + "/checkout", rental).subscribe({
-      next: () => this.router.navigate([' ']),
+      next: () => {
+        this.router.navigate([' '])
+        this.cartSubject.next([]);
+        sessionStorage.removeItem('cart');  // Left off here
+      },
       error: () => this.router.navigate(['/not-found'])
     });
   }

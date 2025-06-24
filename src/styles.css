@@ -5,9 +5,17 @@ body {
     height: 100%;
 }
 
+:root {
+    --primary-color: #1b0a69;
+    --secondary-color: #020312b0;
+    --accent-color: #2811adc7;
+    --text-color: #c4bbfc;
+    --button-hover-color: #6da6ff;
+}
+
 body {
     margin: 0;
-    background-color: #120841;
+    background-color: var(--primary-color);
     color: #c4bbfc;
     font-family: 'Jaro', 'Poetsen One', 'Bebas Neue', sans-serif;
     font-weight: bold;
@@ -15,7 +23,7 @@ body {
 }
 
 .navbar {
-    background-image: linear-gradient(90deg, #120841, #020312b0, #120841);
+    background-image: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
     position: relative;
     width: 100%;
     min-height: 40px;
@@ -73,6 +81,56 @@ body {
     margin: 0 !important;
 }
 
+.cart-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 15px;
+    right: 0;
+    width: 350px;
+    background-image: radial-gradient(circle,#6599b8, #77b2d4) !important;
+    border: 2px solid #8d7efb;
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1000;
+}
+.cart-item-container {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+    background-image: radial-gradient(circle,#6599b8, #77b2d4);
+    border-radius: 4px;
+    box-shadow: #6c6d88 0 0 50px;
+    
+}
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #8d7efb;
+    color: #c4bbfc;
+}
+
+.cart-item-rmv {
+    color: #6da6ff !important;
+    font-weight: bolder !important;
+    font-size: 20px !important;
+    padding: 0 10px 0 10px !important;
+    margin-top: 4%;
+    height: 50%;
+    border-radius: 8px !important;
+    background-color: #020312 !important;
+    box-shadow: 0 0 5px rgb(197, 6, 6) !important;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out !important;
+}
+
+.cart-item-rmv:hover {
+    background-color: #6da6ff !important;
+    color: black !important;
+    cursor: pointer;
+}
+
 .content-main {
     display: flex;
 
@@ -83,7 +141,7 @@ body {
         height: 93vh;
         margin-left: 8px;
         margin-top: 8px;
-        background-image: linear-gradient(140deg, #1b088486, #120841, #020312b0);
+        background-image: linear-gradient(140deg, #1b088486, var(--primary-color), var(--secondary-color));
         border: 3px solid black;
         border-radius: 5px;
         box-shadow: 0 0 25px 0 #2811adc7;
@@ -114,9 +172,9 @@ body {
         width: 100vw;
         height: 94vh;
         margin: 8px;
-        background-image: linear-gradient(200deg, #1b088486, #120841, #020312b0);
+        background-image: linear-gradient(200deg, #1b088486, var(--primary-color), var(--secondary-color));
         border-radius: 5px;
-        box-shadow: 0 0 25px 0 #2811adc7, inset 10px 10px 50px 0 #2811adc7;
+        box-shadow: 10px 10px 50px 0 #2811adc7, inset 10px 10px 50px 0 #2811adc7;
         display: flex;
         flex-direction: column;
 

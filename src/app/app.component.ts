@@ -67,4 +67,12 @@ export class AppComponent implements OnInit {
       return acc += this.prices[film.priceType] as unknown as number * film.rentalDuration;
   }, 0);
   }
+
+  checkOut() {
+    if (this.cart.length > 0) {
+      this.rentalService.checkOut();
+      this.cart = [];
+      this.calculateTotalPrice();
+    }
+  }
 }
